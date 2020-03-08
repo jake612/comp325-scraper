@@ -9,5 +9,5 @@ class PsychTodaySpider(scrapy.Spider):
         return [scrapy.Request(url="https://www.psychologytoday.com/us/therapists/nc/chapel-hill", callback=self.parse, headers=headers)]
 
     def parse(self, response):
-        length = len(response.css('a.result-name'))
-        self.log(length)
+        for name in response.xpath('//a[@class="result-name"]/@href').getall():
+            self.log(name)
