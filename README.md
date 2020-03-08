@@ -1,1 +1,1 @@
-A basic scraper for scraping psychologytoday.com for comp 325
+A simple scraping project for Comp 325
