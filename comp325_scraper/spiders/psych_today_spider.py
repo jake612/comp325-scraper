@@ -31,7 +31,7 @@ class PsychTodaySpider(scrapy.Spider):
 
         def get_in_list(query, splitter):
             list = response.xpath(query).getall()
-            if list is None:
+            if len(list) == 0:
                 return "N/A"
             else:
                 return_string = ""
@@ -39,16 +39,28 @@ class PsychTodaySpider(scrapy.Spider):
                     return_string += item.strip() + splitter
                 return return_string[:-(len(splitter))]
 
+        def get_cost(query):
+            list_items = response.xpath(query).getall()
+            for item in list_items:
+                item = item.strip()
+                if len(item) > 0 and item[0] == '$':
+                    return item
+
+            return "N/A"
+
+
         address_details = response.xpath('//div[@class="address-data"]/span')
 
         yield {
             'name': extract_data('//h1[@itemprop="name"]/text()'),
             'street': extract_street_details(address_details, '//span[@itemprop="streetAddress"]/text()'),
             'locality': extract_street_details(address_details, '//span[@itemprop="addressLocality"]/text()'),
-            'region': extract_street_details(address_details, '//span[@itemprop="addressRegion"]/text()'),
+            'region': extract_street_details(address_details, '//span[@itemprop="addressRegion"]/text()')[:-1],
             'postalcode': extract_street_details(address_details, '//span[@itemprop="postalcode"]/text()'),
             'number': extract_data('//a[@class="phone-number"]/text()'),
             'insurance': get_in_list('//div[@class="spec-list attributes-insurance"]/div[@class="col-split-xs-1 col-split-md-2"]/ul[@class="attribute-list copy-small"]/li/text()', ", "),
-            'specialties': get_in_list('//ul[@class="attribute-list specialties-list"]/li/text()', ', ')
+            'specialties': get_in_list('//ul[@class="attribute-list specialties-list"]/li/text()', ', '),
+            'treatment-approach': get_in_list('//div[@class="spec-list attributes-treatment-orientation"]/div[@class="col-split-xs-1 col-split-md-1"]/ul[@class="attribute-list copy-small"]/li/button/span/text()', ', '),
+            'cost': get_cost('//div[@class="profile-finances details-section top-border"]/ul/li/text()')
         }
 
