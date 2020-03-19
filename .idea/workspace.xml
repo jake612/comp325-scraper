@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75b66747-e5d1-4f40-8c4e-8e82e1f4e290" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comp325_scraper/spiders/psych_today_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/comp325_scraper/spiders/psych_today_spider.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,13 +39,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="csv" value="1" />
-          <entry key="py" value="3832" />
+          <entry key="py" value="4318" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="3832" />
+          <entry key="Python" value="4318" />
         </counts>
       </usages-collector>
     </session>
@@ -56,13 +55,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/comp325_scraper/spiders/psych_today_spider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+            <state relative-caret-position="306">
+              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
               <folding>
-                <marker date="1584646647225" expanded="true" signature="54:59" ph="..." />
-                <marker date="1584646647225" expanded="true" signature="921:1092" ph="..." />
-                <marker date="1584646647225" expanded="true" signature="1125:1798" ph="..." />
-                <marker date="1584646647225" expanded="true" signature="1469:1719" ph="..." />
+                <marker date="1584648816977" expanded="true" signature="54:59" ph="..." />
+                <marker date="1584648816977" expanded="true" signature="249:591" ph="..." />
+                <marker date="1584648816977" expanded="true" signature="831:840" ph="..." />
+                <marker date="1584648816977" expanded="true" signature="1078:1083" ph="..." />
+                <marker date="1584648816977" expanded="true" signature="1367:1538" ph="..." />
+                <marker date="1584648816977" expanded="true" signature="1571:2244" ph="..." />
+                <marker date="1584648816977" expanded="true" signature="1915:2165" ph="..." />
               </folding>
             </state>
           </provider>
@@ -90,8 +92,8 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="952" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
     <option name="width" value="977" />
     <option name="height" value="1038" />
   </component>
@@ -159,10 +161,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="781" height="830" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29435483" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14474554" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -224,13 +226,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/comp325_scraper/spiders/psych_today_spider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+        <state relative-caret-position="306">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
           <folding>
-            <marker date="1584646647225" expanded="true" signature="54:59" ph="..." />
-            <marker date="1584646647225" expanded="true" signature="921:1092" ph="..." />
-            <marker date="1584646647225" expanded="true" signature="1125:1798" ph="..." />
-            <marker date="1584646647225" expanded="true" signature="1469:1719" ph="..." />
+            <marker date="1584648816977" expanded="true" signature="54:59" ph="..." />
+            <marker date="1584648816977" expanded="true" signature="249:591" ph="..." />
+            <marker date="1584648816977" expanded="true" signature="831:840" ph="..." />
+            <marker date="1584648816977" expanded="true" signature="1078:1083" ph="..." />
+            <marker date="1584648816977" expanded="true" signature="1367:1538" ph="..." />
+            <marker date="1584648816977" expanded="true" signature="1571:2244" ph="..." />
+            <marker date="1584648816977" expanded="true" signature="1915:2165" ph="..." />
           </folding>
         </state>
       </provider>

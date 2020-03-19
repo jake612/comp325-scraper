@@ -5,8 +5,22 @@ class PsychTodaySpider(scrapy.Spider):
     name = "psychtoday"
     headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0'}
 
+    def generate_request_urls(self, base_url):
+        requests = []
+        if self.pages is None:
+            self.pages = 1
+        else:
+            self.pages = int(self.pages)
+
+        for page in range(self.pages):
+            target_url = base_url + str(page * 20 + 1)
+            requests.append(scrapy.Request(url=target_url, callback=self.parse, headers=self.headers))
+
+        return requests
+
     def start_requests(self):
-        return [scrapy.Request(url="https://www.psychologytoday.com/us/therapists/nc/chapel-hill", callback=self.parse, headers=self.headers)]
+        base_url = "https://www.psychologytoday.com/us/therapists/{}/{}?sid=5e73cc0863d4a&rec_next=".format(self.state, self.city)
+        return self.generate_request_urls(base_url)
 
     def parse(self, response):
         # iterates over a list of all the links to therapist page
