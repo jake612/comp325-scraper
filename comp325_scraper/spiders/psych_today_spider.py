@@ -1,5 +1,5 @@
 import scrapy
-
+import re
 
 class PsychTodaySpider(scrapy.Spider):
     name = "psychtoday"
@@ -58,23 +58,27 @@ class PsychTodaySpider(scrapy.Spider):
             for item in list_items:
                 item = item.strip()
                 if len(item) > 0 and item[0] == '$':
-                    return item
+                    costs = item.split("-")
+                    costs = [re.sub("\D", "", cost) for cost in costs]
+                    if len(costs) == 1:
+                        return costs[0], costs[0]
+                    else:
+                        return costs[0], costs[1]
+            return "N/A", "N/A"
 
-            return "N/A"
-
-
+        all_costs = get_cost('//div[@class="profile-finances details-section top-border"]/ul/li/text()')
         address_details = response.xpath('//div[@class="address-data"]/span')
 
         yield {
             'name': extract_data('//h1[@itemprop="name"]/text()'),
             'street': extract_street_details(address_details, '//span[@itemprop="streetAddress"]/text()'),
-            'locality': extract_street_details(address_details, '//span[@itemprop="addressLocality"]/text()'),
-            'region': extract_street_details(address_details, '//span[@itemprop="addressRegion"]/text()')[:-1],
+            'locality': extract_street_details(address_details, '//span[@itemprop="addressLocality"]/text()')[:-1],
+            'region': extract_street_details(address_details, '//span[@itemprop="addressRegion"]/text()'),
             'postalcode': extract_street_details(address_details, '//span[@itemprop="postalcode"]/text()'),
             'number': extract_data('//a[@class="phone-number"]/text()'),
             'insurance': get_in_list('//div[@class="spec-list attributes-insurance"]/div[@class="col-split-xs-1 col-split-md-2"]/ul[@class="attribute-list copy-small"]/li/text()', ", "),
-            'specialties': get_in_list('//ul[@class="attribute-list specialties-list"]/li/text()', ', '),
-            'treatment-approach': get_in_list('//div[@class="spec-list attributes-treatment-orientation"]/div[@class="col-split-xs-1 col-split-md-1"]/ul[@class="attribute-list copy-small"]/li/button/span/text()', ', '),
-            'cost': get_cost('//div[@class="profile-finances details-section top-border"]/ul/li/text()')
+            'low_cost': all_costs[0],
+            'high_cost': all_costs[1],
+            'titles': get_in_list('//div[@class="profile-title contact-title"]/h2/span[@class="nowrap"]/span/text()', ', ')
         }
 
